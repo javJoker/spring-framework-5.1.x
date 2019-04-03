@@ -56,6 +56,7 @@ import java.lang.annotation.Target;
  * @since 4.0
  * @see Condition
  */
+//condition注解是不会继承的。如果一个父类使用了conditional注解，其子类是不会拥有conditions的
 @Target({ElementType.TYPE, ElementType.METHOD})
 @Retention(RetentionPolicy.RUNTIME)
 @Documented

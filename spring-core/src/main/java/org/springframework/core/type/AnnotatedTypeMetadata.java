@@ -47,6 +47,7 @@ public interface AnnotatedTypeMetadata {
 	 * type to look for
 	 * @return whether a matching annotation is defined
 	 */
+	// 判断是否具有指定注解
 	boolean isAnnotated(String annotationName);
 
 	/**

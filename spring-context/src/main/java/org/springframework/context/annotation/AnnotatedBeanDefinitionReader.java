@@ -130,6 +130,7 @@ public class AnnotatedBeanDefinitionReader {
 	 * @param annotatedClasses one or more annotated classes,
 	 * e.g. {@link Configuration @Configuration} classes
 	 */
+	// 幂等注入注解类
 	public void register(Class<?>... annotatedClasses) {
 		for (Class<?> annotatedClass : annotatedClasses) {
 			registerBean(annotatedClass);
@@ -200,20 +201,23 @@ public class AnnotatedBeanDefinitionReader {
 	/**
 	 * Register a bean from the given bean class, deriving its metadata from
 	 * class-declared annotations.
-	 * @param annotatedClass the class of the bean
-	 * @param instanceSupplier a callback for creating an instance of the bean
+	 * @param annotatedClass the class of the bean  注解类
+	 * @param instanceSupplier a callback for creating an instance of the bean  创建bean实例的回调
 	 * (may be {@code null})
-	 * @param name an explicit name for the bean
+	 * @param name an explicit name for the bean   bean的显示名称
 	 * @param qualifiers specific qualifier annotations to consider, if any,
-	 * in addition to qualifiers at the bean class level
+	 * in addition to qualifiers at the bean class level  限定符注解
 	 * @param definitionCustomizers one or more callbacks for customizing the
-	 * factory's {@link BeanDefinition}, e.g. setting a lazy-init or primary flag
+	 * factory's {@link BeanDefinition}, e.g. setting a lazy-init or primary flag  自定义bean工厂
 	 * @since 5.0
 	 */
+	// 注册bean
 	<T> void doRegisterBean(Class<T> annotatedClass, @Nullable Supplier<T> instanceSupplier, @Nullable String name,
 			@Nullable Class<? extends Annotation>[] qualifiers, BeanDefinitionCustomizer... definitionCustomizers) {
 
+		// 创建AnnotatedGenericBeanDefinition
 		AnnotatedGenericBeanDefinition abd = new AnnotatedGenericBeanDefinition(annotatedClass);
+
 		if (this.conditionEvaluator.shouldSkip(abd.getMetadata())) {
 			return;
 		}

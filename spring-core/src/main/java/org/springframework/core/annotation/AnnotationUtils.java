@@ -970,6 +970,7 @@ public abstract class AnnotationUtils {
 	 * @return {@code true} if the annotation is in the {@code java.lang.annotation} package
 	 * @since 4.3.8
 	 */
+	// 判断是否为java中的注解
 	static boolean isInJavaLangAnnotationPackage(@Nullable Class<? extends Annotation> annotationType) {
 		return (annotationType != null && isInJavaLangAnnotationPackage(annotationType.getName()));
 	}
@@ -981,6 +982,7 @@ public abstract class AnnotationUtils {
 	 * @return {@code true} if the annotation is in the {@code java.lang.annotation} package
 	 * @since 4.2
 	 */
+	// 以java.lang.annotation开头的为java中的注解
 	public static boolean isInJavaLangAnnotationPackage(@Nullable String annotationType) {
 		return (annotationType != null && annotationType.startsWith("java.lang.annotation"));
 	}

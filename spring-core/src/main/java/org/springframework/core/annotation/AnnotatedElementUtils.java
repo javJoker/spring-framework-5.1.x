@@ -916,6 +916,7 @@ public abstract class AnnotatedElementUtils {
 				}
 
 				if (element instanceof Class) {  // otherwise getAnnotations doesn't return anything new
+					// 注解元素的父类
 					Class<?> superclass = ((Class<?>) element).getSuperclass();
 					if (superclass != null && superclass != Object.class) {
 						List<Annotation> inheritedAnnotations = new LinkedList<>();
@@ -964,6 +965,9 @@ public abstract class AnnotatedElementUtils {
 	 * @since 4.2
 	 */
 	@Nullable
+	/**
+	 * 此方法应首先调用本地声明的注释,然后使用继承的注释，从而允许本地注释优先于继承的注释。
+	 */
 	private static <T> T searchWithGetSemanticsInAnnotations(@Nullable AnnotatedElement element,
 			List<Annotation> annotations, Set<Class<? extends Annotation>> annotationTypes,
 			@Nullable String annotationName, @Nullable Class<? extends Annotation> containerType,
@@ -972,6 +976,7 @@ public abstract class AnnotatedElementUtils {
 		// Search in annotations
 		for (Annotation annotation : annotations) {
 			Class<? extends Annotation> currentAnnotationType = annotation.annotationType();
+			// 非java中的注解
 			if (!AnnotationUtils.isInJavaLangAnnotationPackage(currentAnnotationType)) {
 				if (annotationTypes.contains(currentAnnotationType) ||
 						currentAnnotationType.getName().equals(annotationName) ||
