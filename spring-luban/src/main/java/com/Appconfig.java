@@ -13,4 +13,10 @@ import org.springframework.context.annotation.Configuration;
 @Conditional(TestCondition.class)
 public class Appconfig {
 
+	@Bean
+//	@Conditional( TestCondition.class )
+	public User initUser(User user){
+		return user;
+	}
+
 }

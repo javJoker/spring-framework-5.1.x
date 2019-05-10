@@ -45,7 +45,7 @@ public class AnnotatedGenericBeanDefinition extends GenericBeanDefinition implem
 
 	private final AnnotationMetadata metadata;
 
-	@Nullable
+	@Nullable // 可为空
 	private MethodMetadata factoryMethodMetadata;
 
 

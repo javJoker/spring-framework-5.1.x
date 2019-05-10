@@ -908,6 +908,7 @@ public abstract class AnnotatedElementUtils {
 		if (visited.add(element)) {
 			try {
 				// Start searching within locally declared annotations
+				// 搜索本地声明的注解
 				List<Annotation> declaredAnnotations = Arrays.asList(AnnotationUtils.getDeclaredAnnotations(element));
 				T result = searchWithGetSemanticsInAnnotations(element, declaredAnnotations,
 						annotationTypes, annotationName, containerType, processor, visited, metaDepth);
@@ -1446,6 +1447,7 @@ public abstract class AnnotatedElementUtils {
 		 * @since 4.3
 		 * @see #getAggregatedResults
 		 */
+		// 判断处理器是否聚合
 		boolean aggregates();
 
 		/**
@@ -1471,6 +1473,7 @@ public abstract class AnnotatedElementUtils {
 	 */
 	private abstract static class SimpleAnnotationProcessor<T> implements Processor<T> {
 
+		// 默认为false
 		private final boolean alwaysProcesses;
 
 		public SimpleAnnotationProcessor() {

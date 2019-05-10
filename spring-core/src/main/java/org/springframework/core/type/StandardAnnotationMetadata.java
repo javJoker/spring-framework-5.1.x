@@ -40,6 +40,13 @@ import org.springframework.util.MultiValueMap;
  */
 public class StandardAnnotationMetadata extends StandardClassMetadata implements AnnotationMetadata {
 
+
+	/**
+	 * AnnotationConfigApplicationContext
+	 * 				annotationConfigApplicationContext
+	 * 				= new AnnotationConfigApplicationContext(XXX.class);
+	 * 	启动加载类中XXX.class的类头上面的注解数组
+	 */
 	private final Annotation[] annotations;
 
 	private final boolean nestedAnnotationsAsMap;

@@ -665,10 +665,17 @@ public abstract class AnnotationUtils {
 	 * (only for internal iteration purposes, not for external exposure)
 	 * @since 5.1
 	 */
+	// 对于给定元素中获得缓存注解数组
 	static Annotation[] getDeclaredAnnotations(AnnotatedElement element) {
 		if (element instanceof Class || element instanceof Member) {
 			// Class/Field/Method/Constructor returns a defensively cloned array from getDeclaredAnnotations.
 			// Since we use our result for internal iteration purposes only, it's safe to use a shared copy.
+			/**
+			 * 类 /字段/方法/构造函数从getDeclaredAnnotations方法中返回一个防御性克隆数组。
+			 * 由于我们只将结果用于内部迭代，所以使用共享副本是安全的。
+			 *
+			 * declaredAnnotationsCache ---> Map
+			 */
 			return declaredAnnotationsCache.computeIfAbsent(element, AnnotatedElement::getDeclaredAnnotations);
 		}
 		return element.getDeclaredAnnotations();

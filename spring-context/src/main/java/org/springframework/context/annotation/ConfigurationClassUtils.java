@@ -149,7 +149,12 @@ abstract class ConfigurationClassUtils {
 	 * @return {@code true} if the given class is to be processed as a full
 	 * configuration class, including cross-method call interception
 	 */
+	/**
+	 * 检查给定的元数据能否获得完整的配置类候选项
+	 * 使用@Configuration注解
+	 */
 	public static boolean isFullConfigurationCandidate(AnnotationMetadata metadata) {
+		// Configuration.class.getName() -> org.springframework.context.annotation.Configuration
 		return metadata.isAnnotated(Configuration.class.getName());
 	}
 

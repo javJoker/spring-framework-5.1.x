@@ -35,8 +35,8 @@ public class StandardClassMetadata implements ClassMetadata {
 	// 启动时被注入的类
 	// AnnotationConfigApplicationContext
 	//				annotationConfigApplicationContext
-	//				= new AnnotationConfigApplicationContext(Appconfig.class);
-	//	指Appconfig类
+	//				= new AnnotationConfigApplicationContext(XXXX.class);
+	//	指XXXX类
 	private final Class<?> introspectedClass;
 
 
