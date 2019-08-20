@@ -1899,6 +1899,7 @@ public abstract class AnnotationUtils {
 	 * @return {@code true} if the method is an attribute method
 	 * @since 4.2
 	 */
+	// 判断一个方法是否是注解属性方法
 	static boolean isAttributeMethod(@Nullable Method method) {
 		return (method != null && method.getParameterCount() == 0 && method.getReturnType() != void.class);
 	}
